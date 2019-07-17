@@ -17,3 +17,12 @@ services:
       - ./web:/usr/share/nginx/html/
     ports:
       - 80:80
+  backend:
+    image: python:3.6
+    volumes:
+      # Application
+      - ./server:/app
+    working_dir: /app
+    command: bash ./app.sh
+    ports:
+      - 8080:8080
